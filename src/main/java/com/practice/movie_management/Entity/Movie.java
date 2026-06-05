@@ -23,5 +23,6 @@ public class Movie {
     private String director;
     private double rating;
     private String email;
+
     private String password;
 }

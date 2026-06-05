@@ -20,34 +20,36 @@ public class MovieController {
     private MovieAdvance movie;
 
     //List all Movies
-//    @GetMapping("/all")
-//    public ResponseEntity<List<MovieDTO>> getAll() {
-//        return ResponseEntity.ok(movie.getAll());
-//    }
+    @GetMapping("/all")
+    public ResponseEntity<List<Movie>> getAll() {
+        return ResponseEntity.ok(movie.getAll());
+    }
 
-    //List Movie by id
+    //DTO
+    //List Movie by id using DTO
     @GetMapping("/{id}")
     public ResponseEntity<MovieDTO> getById(@PathVariable int id) {
         return ResponseEntity.ok(movie.getMovie(id));
     }
 
     //Add new Movie List
-//    @PostMapping("/list")
-//    public ResponseEntity<List<MovieDTO>> addNew(@RequestBody List<@Valid MovieDTO> m) {
-//        return ResponseEntity.ok(movie.addMovieAll(m));
-//    }
+    @PostMapping("/list")
+    public ResponseEntity<List<Movie>> addNew(@RequestBody List<@Valid Movie> m) {
+        return ResponseEntity.ok(movie.addMovieAll(m));
+    }
 
-    //Add new Movie
+    //DTO
+    //Add new Movie by DTO
     @PostMapping("/new")
     public ResponseEntity<MovieDTO> addNewList(@Valid @RequestBody MovieDTO dto) {
         return ResponseEntity.ok(movie.addMovie(dto));
     }
 
     //Update Movie
-//    @PutMapping("/update")
-//    public ResponseEntity<MovieDTO> update(@Valid @RequestBody MovieDTO m) {
-//        return ResponseEntity.ok(movie.updateMovie(m));
-//    }
+    @PutMapping("/update")
+    public ResponseEntity<Movie> update(@Valid @RequestBody Movie m) {
+        return ResponseEntity.ok(movie.updateMovie(m));
+    }
 
     //Delete Movie by id
     @DeleteMapping("/delete/{id}")
@@ -62,27 +64,27 @@ public class MovieController {
     }
 
     //List Movie based on params
-//    @GetMapping("/search")
-//    public ResponseEntity<List<MovieDTO>> getMoviesByTitleAndRating(
-//            @RequestParam String title,
-//            @RequestParam double rating) {
-//
-//        return ResponseEntity.ok(
-//                movie.getMoviesByTitleAndRating(title, rating)
-//        );
-//    }
+    @GetMapping("/search")
+    public ResponseEntity<List<Movie>> getMoviesByTitleAndRating(
+            @RequestParam String title,
+            @RequestParam double rating) {
 
-//    @GetMapping("/{rating}")
-//    public ResponseEntity<List<MovieDTO>> getMovieByRating(@PathVariable("rating") double rating){
-//        return ResponseEntity.ok(movie.getMovieByRating(rating));
-//    }
-//
-//    @PostMapping("/filter")
-//    public List<MovieDTO> getMovieByTandR(@Valid
-//            @Param("title") String title,
-//            @Param("rating") double rating
-//    ){
-//        return movie.getMovieByTandR(title,rating);
-//    }
+        return ResponseEntity.ok(
+                movie.getMoviesByTitleAndRating(title, rating)
+        );
+    }
+
+    @GetMapping("/{rating}")
+    public ResponseEntity<List<Movie>> getMovieByRating(@PathVariable("rating") double rating){
+        return ResponseEntity.ok(movie.getMovieByRating(rating));
+    }
+
+    @PostMapping("/filter")
+    public List<Movie> getMovieByTandR(@Valid
+            @Param("title") String title,
+            @Param("rating") double rating
+    ) {
+        return movie.getMovieByTandR(title, rating);
+    }
 
 }

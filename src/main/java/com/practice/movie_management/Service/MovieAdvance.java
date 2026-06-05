@@ -16,35 +16,35 @@ public class MovieAdvance {
     private MovieRepo repo;
 
     //GET Movie List
-//    public List<Movie> getAll(){
-//        return repo.findAll();
-//    }
+    public List<Movie> getAll(){
+        return repo.findAll();
+    }
 
     //GET Movie by id
-//    public MovieDTO getId(int id){
-//        return repo.findById(id)
-//                   .orElseThrow(() ->
-//                    new ResourceNotFoundException(
-//                "Movie",
-//                "id",
-//                String.valueOf(id)
-//        ));
-//    }
+    public Movie getId(int id){
+        return repo.findById(id)
+                   .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                "Movie",
+                "id",
+                String.valueOf(id)
+        ));
+    }
 
     //POST single Movie
-//    public MovieDTO addMovie(MovieDTO movie){
+//    public Movie addMovie(MovieDTO movie){
 //        return repo.save(movie);
 //    }
 
     //POST Movie List
-//    public List<MovieDTO> addMovieAll(List<MovieDTO> movie){
-//        return repo.saveAll(movie); //this automatically saves data into DB
-//    }
+    public List<Movie> addMovieAll(List<Movie> movie){
+        return repo.saveAll(movie); //this automatically saves data into DB
+    }
 
     //PUT Movie
-//    public MovieDTO updateMovie(MovieDTO movie){
-//        return repo.save(movie);
-//    }
+    public Movie updateMovie(Movie movie){
+        return repo.save(movie);
+    }
 
     //DELETE Movie by id
     public String deleteMovie(int id){
@@ -66,19 +66,18 @@ public class MovieAdvance {
     }
 
     //GET Movie by passing params
-//    public List<MovieDTO> getMoviesByTitleAndRating(String title, double rating) {
-//        return repo.findByTitleAndRating(title, rating);
-//    }
-//
-//    public List<MovieDTO> getMovieByRating(double rating){
-//        return repo.findByRating(rating);
-//    }
-//
-//    public List<MovieDTO> getMovieByTandR(String title, double rating) {
-//        return repo.findBy(title,rating);
-//
-//    }
-// jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+    public List<Movie> getMoviesByTitleAndRating(String title, double rating) {
+        return repo.findByTitleAndRating(title, rating);
+    }
+
+    public List<Movie> getMovieByRating(double rating){
+        return repo.findByRating(rating);
+    }
+
+    public List<Movie> getMovieByTandR(String title, double rating) {
+        return repo.findBy(title,rating);
+
+    }
 
     public MovieDTO getMovie(int id) {
         Movie movie = repo.findById(id)
